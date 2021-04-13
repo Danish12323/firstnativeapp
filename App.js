@@ -7,6 +7,7 @@ export default function App() {
     var num= Math.floor(Math.random() *100);
     ;
     return num;
+    //return random num
   }
   const [getText, setText] = useState("")
   const [getguess,message]=useState("")
