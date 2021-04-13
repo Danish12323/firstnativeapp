@@ -1,9 +1,9 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import {Text, View, StyleSheet, Button, TouchableWithoutFeedback,Pressable} from 'react-native';
-
+import { StyleSheet, Text, View, Button,Modal,Pressable } from 'react-native';
 const array = [['', '', ''],['', '', ''],['', '', '']];
-
 export default function App() {
+
   const [getBtnTxt1, setBtnTxt1] = useState('-');
   const [getBtnTxt2, setBtnTxt2] = useState('-');
   const [getBtnTxt3, setBtnTxt3] = useState('-');
@@ -15,6 +15,8 @@ export default function App() {
   const [getBtnTxt9, setBtnTxt9] = useState('-');
   const [getResult, setResult] = useState('');
   const [getTurn, setTurn] = useState('p1');
+  const [getmodel,setmodel]=useState(false);
+
 
   const onClick = (id) => {
     if (getTurn == 'p1') {
@@ -94,7 +96,7 @@ export default function App() {
       }
       setTurn('p1');
     }
-    console.log(array);
+    
     result();
   };
   const result = () => {
@@ -111,6 +113,7 @@ export default function App() {
     ) {
       setTurn('')
       setResult('PLAYER 1(X) HAS WON!');
+      setmodel(true);
     } else if (
       (array[0][0] === 'O' && array[0][1] === 'O' && array[0][2] === 'O') ||
       (array[0][0] === 'O' && array[1][1] === 'O' && array[2][2] === 'O') ||
@@ -124,6 +127,7 @@ export default function App() {
     ) {
       setTurn('')
       setResult('PLAYER 2(O) HAS WON!');
+      setmodel(true);
     } else if (
       array[0][0] !== '' &&
       array[0][1] !== '' &&
@@ -137,6 +141,7 @@ export default function App() {
     ) {
       setTurn('')
       setResult('DRAW!');
+      setmodel(true);
     }
   };
 
@@ -145,111 +150,204 @@ export default function App() {
     array[0][0]= '', array[0][1]= '', array[0][2]= '', array[1][0]= '', array[1][1]= '', array[1][2]= '', array[2][0]= '', array[2][1]= '', array[2][2] = '';
     setResult('');
     setTurn('p1');
+    setmodel(false);
   };
 
 
+
+
+
+  
   return (
     <View style={styles.container}>
-    <View style={[{ padding: '10%', alignItems: 'center' }]}>
-        <Text style={[{  fontSize: '25', justifyContent: 'center' }]}/>
-        TURN : {getResult == '' ? (getTurn==('p1') ? 'PLAYER 1 (X)' : 'PLAYER 2 (O)') : ''}
-        <Text />
+
+<Modal visible={getmodel} style={{marginTop:30}} style={styles.models}> 
+<Text style={styles.textcenter}>{getResult}</Text>
+<View style={[{ padding: '10%', fontSize: '25' }]}>
+        <Button onPress={play} title={'Play Again'} />
       </View>
-      <View style={styles.viewRowContainer}>
-        <Pressable onPress={() => onClick(1)} style={[{backgroundColor:'#eee'}]}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</Modal>
+<View>
+  <Text style={{fontSize:20},{justifyContent:'center'},{textAlign:'center'}}>
+
+  TURN : {getResult == '' ? (getTurn==('p1') ? 'PLAYER 1 (X)' : 'PLAYER 2 (O)') : ''}
+  </Text>
+</View>
+
+
+
+<View style={styles.grid_container}>
+
+<View style={styles.grid_row}>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(1)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt1}
             </Text>
           </View>
         </Pressable>
-        <Pressable onPress={() => onClick(2)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(2)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt2}
             </Text>
           </View>
         </Pressable>
-        <Pressable onPress={() => onClick(3)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(3)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt3}
             </Text>
           </View>
         </Pressable>
-      </View>
-      <View style={styles.viewRowContainer}>
-        <Pressable onPress={() => onClick(4)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+
+</View>
+
+<View style={styles.grid_row}>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(4)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt4}
             </Text>
           </View>
         </Pressable>
-        <Pressable onPress={() => onClick(5)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(5)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt5}
             </Text>
           </View>
         </Pressable>
-        <Pressable onPress={() => onClick(6)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(6)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt6}
             </Text>
           </View>
         </Pressable>
-      </View>
-      <View style={styles.viewRowContainer}>
-        <Pressable onPress={() => onClick(7)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+
+</View>
+<View style={styles.grid_row}>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(7)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt7}
             </Text>
           </View>
         </Pressable>
-        <Pressable onPress={() => onClick(8)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(8)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt8}
             </Text>
-          </View >
+          </View>
         </Pressable>
-        <Pressable onPress={() => onClick(9)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>
+
+</View>
+
+<View style={styles.item}>
+  
+
+  <Pressable onPress={() => onClick(9)} style={{backgroundColor:'#eee'}}>
+          <View>
+            <Text style={styles.textcenter}>
               {getBtnTxt9}
             </Text>
           </View>
         </Pressable>
-      </View>
-      <View style={[{ alignItems: 'center' }]}>
-        <Text style={[{ padding: '10%', fontSize: '25', justifyContent: 'center' }]}/>
-        {getResult}
-        <Text />
-      </View>
-      <View style={[{ padding: '10%', fontSize: '25' }]}>
-        <Button onPress={play} title={'Play Again'} />
-      </View>
-      <Pressable onPress={()=>{
-alert('hello');
-      }}>
-      <Text>Helo click</Text>
-      
-      </Pressable>
+
+</View>
+
+
+</View>
+
+</View>
+
+
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1 ',
-    padding: 8,
-  },
-  viewRowContainer: { flexDirection: 'row', justifyContent: "space-between" },
-  buttonText: { fontSize: 50 },
-  buttonContainer: { width: '100%', height: 100, borderColor: 'black', borderWidth: 1, justifyContent: 'center', alignItems: 'center' },
-});
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1',
+      padding: 8,
+      marginLeft:20
+    },
+grid_container:{
+marginTop:20
+},
+grid_row:{
+  width:'100%',
+  flexDirection:'row'
+},
+item:{
+  width:'33%',
+   borderWidth:2,
+   borderColor:"#20232a",
+   paddingBottom:15,
+   paddingTop:15
+},
+textcenter:{
+  textAlign:'center'
+}
+
+,
+models:{
+  backgroundColor:'lightpink',
+  color:'white',
+  marginTop:30
+} });
