@@ -161,13 +161,7 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-<Modal visible={getmodel} style={{marginTop:30}} style={styles.models}> 
-<Text style={styles.textcenter}>{getResult}</Text>
-<View style={[{ padding: '10%', fontSize: '25' }]}>
-        <Button onPress={play} title={'Play Again'} />
-      </View>
 
-</Modal>
 <View>
   <Text style={{fontSize:20},{justifyContent:'center'},{textAlign:'center'}}>
 
@@ -184,7 +178,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(1)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(1)} >
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt1}
@@ -197,7 +191,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(2)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(2)}>
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt2}
@@ -210,7 +204,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(3)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(3)}>
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt3}
@@ -228,7 +222,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(4)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(4)}>
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt4}
@@ -241,7 +235,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(5)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(5)} >
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt5}
@@ -254,7 +248,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(6)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(6)}>
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt6}
@@ -271,7 +265,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(7)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(7)}>
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt7}
@@ -285,7 +279,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(8)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(8)} >
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt8}
@@ -298,7 +292,7 @@ export default function App() {
 <View style={styles.item}>
   
 
-  <Pressable onPress={() => onClick(9)} style={{backgroundColor:'#eee'}}>
+  <Pressable onPress={() => onClick(9)}>
           <View>
             <Text style={styles.textcenter}>
               {getBtnTxt9}
@@ -312,8 +306,15 @@ export default function App() {
 </View>
 
 </View>
+<View style={styles.models}>
+<Modal visible={getmodel} style={{marginTop:30}} style={styles.models}> 
+<Text style={styles.textcenter}>{getResult}</Text>
+<View style={[{ padding: '10%', fontSize: '25' }]}>
+        <Button onPress={play} title={'Play Again'} />
+      </View>
 
-
+</Modal>
+</View>
     </View>
   );
 }
@@ -323,23 +324,30 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: '#ecf0f1',
-      padding: 8,
-      marginLeft:20
+      backgroundColor: 'lightpink',
+      
+      
     },
 grid_container:{
-marginTop:20
+marginTop:20,
+marginLeft:10,
+marginRight:10,
+backgroundColor:'lightpink'
+
 },
 grid_row:{
   width:'100%',
-  flexDirection:'row'
+  flexDirection:'row',
+  backgroundColor:'lightgreen'
+  
 },
 item:{
   width:'33%',
    borderWidth:2,
    borderColor:"#20232a",
    paddingBottom:15,
-   paddingTop:15
+   paddingTop:15,
+   
 },
 textcenter:{
   textAlign:'center'
@@ -349,5 +357,5 @@ textcenter:{
 models:{
   backgroundColor:'lightpink',
   color:'white',
-  marginTop:30
+  backgroundColor:'yellow'
 } });
